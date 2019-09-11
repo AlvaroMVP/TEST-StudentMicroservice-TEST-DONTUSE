@@ -1,24 +1,34 @@
 package com.project.model;
 
-import java.text.DateFormat;
-import java.util.Date;
+
+import java.io.Serializable;
+
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "student")
-public class Student {
-  
-  @Getter
-  @Setter
+
+public class Student implements Serializable{
+  private static final long serialVersionUID = 1L;
   @Id
+  @NotNull
   private String id;
   private String fullName;
   private String gender;
-  private Date birthdate;
+  private String birthdate;
   private String TypeDocument;
-  private String NumberDocument;
-    
+  private String numberDocument;
+ 
 }

@@ -1,6 +1,5 @@
 package com.project.service;
 
-import java.util.Date;
 
 import com.project.model.Student;
 
@@ -13,9 +12,10 @@ public interface StudentInterface {
 
    Flux<Student> findAll();
    Flux<Student> findByFullName(String fullName);
-   Flux<Student> findByDocument(String Document);
-   Flux<Student> findByDate(Date birthdate);
-
+   Flux<Student> findByDate(String birthdate);
+   
+   Mono<Student> findBynumberDocument(String numberDocument);
+   
    Mono<Student> findById(String id);
    Mono<Student> save(Student student);
    Mono<Void> delete(String id);

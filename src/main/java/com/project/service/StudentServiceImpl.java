@@ -1,6 +1,5 @@
 package com.project.service;
 
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,17 +29,18 @@ public class StudentServiceImpl implements StudentInterface {
 
 	@Override
 	public Flux<Student> findByFullName(String fullName) {
-		return null;
+		return studentRepository.findByFullName(fullName);
+	}
+
+
+	@Override
+	public Mono<Student> findBynumberDocument(String numberDocument) {
+	
+		return studentRepository.findBynumberDocument(numberDocument);
 	}
 
 	@Override
-	public Flux<Student> findByDocument(String Document) {
-		
-		return null;
-	}
-
-	@Override
-	public Flux<Student> findByDate(Date birthdate) {
+	public Flux<Student> findByDate(String birthdate) {
 		
 		return null;
 	}
