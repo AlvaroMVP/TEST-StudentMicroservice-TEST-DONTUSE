@@ -1,9 +1,11 @@
 package com.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,12 +45,22 @@ public class StudentController 	{
 	
 	
 	 @GetMapping("student/fullName")
-	    public Flux<Student> findFullName(@RequestParam("filter") String fullName) {
-	        return studentServiceImpl.findByFullName(fullName);
+	 public Flux<Student> findFullName(@RequestParam("filter") String fullName) {
+		return studentServiceImpl.findByFullName(fullName);
 	    }
 	 
-	 
+	 @PostMapping("/student")
+	 public void create(@RequestBody Student student) {
+		 studentServiceImpl.create(student);
+	 }
 	 	
+	 @PutMapping("/student")
+	 public Mono<Student> save(@RequestBody Student student){
+		 return studentServiceImpl.save(student);
+	 }
 	 
-	 
+	 @DeleteMapping("/student/{id}")
+	 public void delete(@PathVariable("id") String id) {
+		 studentServiceImpl.delete(id).subscribe();
+	 };
 }

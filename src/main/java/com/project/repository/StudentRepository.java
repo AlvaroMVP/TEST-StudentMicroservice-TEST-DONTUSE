@@ -11,8 +11,5 @@ public interface StudentRepository extends ReactiveMongoRepository<Student, Stri
 	
 	
 	Flux<Student> findByFullName(String fullName);
-
-	
-	
 	Mono<Student> findBynumberDocument(String numberDocument);
 }
